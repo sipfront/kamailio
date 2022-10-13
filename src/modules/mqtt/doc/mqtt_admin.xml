@@ -111,11 +111,11 @@ modparam("mqtt", "keepalive", 5)
 		<title><varname>id</varname> (str)</title>
 		<para>
 		String to use as the mqtt client id.
-		If NULL, a random client id will be generated. 
+		If this modparam is not set, a random client id will be generated. 
 		</para>
 		<para>
 		<emphasis>
-			Default value is NULL.
+			Default is that parm is unset, causing a random client id to be used.
 		</emphasis>
 		</para>
 		<example>
@@ -130,11 +130,11 @@ modparam("mqtt", "id", "kamailio123")
 	<section id="mqtt.p.username">
 		<title><varname>username</varname> (str)</title>
 		<para>
-		The username to send as a string or NULL to disable authentication.
+		The username to send as a string, or not setting this option to disable authentication.
 		</para>
 		<para>
 		<emphasis>
-			Default value is NULL (no authentication). 
+			Default value is that param is unset (no authentication). 
 			Must be used together with <varname>password</varname>.
 		</emphasis>
 		</para>
@@ -150,11 +150,11 @@ modparam("mqtt", "username", "kamailio-user")
 	<section id="mqtt.p.password">
 		<title><varname>password</varname> (str)</title>
 		<para>
-		The password to send as a string or NULL to disable authentication.
+		The password to send as a string, or not setting this option to disable authentication.
 		</para>
 		<para>
 		<emphasis>
-			Default value is NULL (no authentication). 
+			Default value is that param is unset (no authentication). 
 			Must be used together with <varname>username</varname>.
 		</emphasis>
 		</para>
@@ -174,7 +174,7 @@ modparam("mqtt", "password", "supers3cre7")
 		</para>
 		<para>
 		<emphasis>
-			Default value is NULL. Must be used together with <varname>will</varname>.
+			Default value is that param is unset (no last will is sent). Must be used together with <varname>will</varname>.
 		</emphasis>
 		</para>
 		<example>
@@ -193,7 +193,7 @@ modparam("mqtt", "will_topic", "kamailio123")
 		</para>
 		<para>
 		<emphasis>
-			Default value is NULL. Must be used together with <varname>will_topic</varname>.
+			Default value is that param is unset (no last will is sent). Must be used together with <varname>will_topic</varname>.
 		</emphasis>
 		</para>
 		<example>
