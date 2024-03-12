@@ -62,7 +62,7 @@ extern str _tps_xavu_cfg;
 extern str _tps_xavu_field_acontact;
 extern str _tps_xavu_field_bcontact;
 extern str _tps_xavu_field_contact_host;
-extern str _tps_xavu_field_cparam_name;
+extern str _tps_xavu_field_cparam_uid;
 
 extern str _tps_context_param;
 extern str _tps_context_value;
