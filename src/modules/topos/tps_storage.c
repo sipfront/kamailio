@@ -597,11 +597,15 @@ int tps_storage_record(sip_msg_t *msg, tps_data_t *td, int dialog, int dir)
 
 	if(dialog == 0) {
 		cpid = NULL;
+		LM_DBG("no dialog, checking for cparam uid xavu\n");
 		if(_tps_xavu_cfg.len > 0 && _tps_xavu_field_cparam_uid.len > 0) {
+			LM_DBG("cparam uid xavu defined, checking for cparam uid xavu value\n");
 			cpid = xavu_get_child_with_sval(
 					&_tps_xavu_cfg, &_tps_xavu_field_cparam_uid);
 		}
 		if(cpid != NULL && cpid->val.v.s.len > 0) {
+			LM_DBG("cparam uid xavu value found, using '%.*s'\n", cpid->val.v.s.len,
+					cpid->val.v.s.s);
 			suid = cpid->val.v.s;
 		} else {
 			sruid_nextx(&_tps_sruid, sx);
