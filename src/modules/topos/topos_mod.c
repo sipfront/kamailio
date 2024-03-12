@@ -130,6 +130,7 @@ str _tps_xavu_cfg = STR_NULL;
 str _tps_xavu_field_acontact = STR_NULL;
 str _tps_xavu_field_bcontact = STR_NULL;
 str _tps_xavu_field_contact_host = STR_NULL;
+str _tps_xavu_field_cparam_uid = STR_NULL;
 
 str _tps_context_param = STR_NULL;
 str _tps_context_value = STR_NULL;
@@ -182,6 +183,7 @@ static param_export_t params[] = {
 	{"xavu_field_a_contact", PARAM_STR, &_tps_xavu_field_acontact},
 	{"xavu_field_b_contact", PARAM_STR, &_tps_xavu_field_bcontact},
 	{"xavu_field_contact_host", PARAM_STR, &_tps_xavu_field_contact_host},
+	{"xavu_field_cparam_uid", PARAM_STR, &_tps_xavu_field_cparam_uid},
 	{"rr_update", PARAM_INT, &_tps_rr_update},
 	{"context", PARAM_STR, &_tps_context_param},
 	{"methods_nocontact", PARAM_STR, &_tps_methods_nocontact_list},

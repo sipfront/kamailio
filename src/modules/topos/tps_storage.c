@@ -62,6 +62,7 @@ extern str _tps_xavu_cfg;
 extern str _tps_xavu_field_acontact;
 extern str _tps_xavu_field_bcontact;
 extern str _tps_xavu_field_contact_host;
+extern str _tps_xavu_field_cparam_name;
 
 extern str _tps_context_param;
 extern str _tps_context_value;
@@ -586,6 +587,7 @@ int tps_storage_record(sip_msg_t *msg, tps_data_t *td, int dialog, int dir)
 	int ret = -1; /* error if dialog == 0 */
 	str suid;
 	str *sx = NULL;
+	sr_xavp_t *cpid = NULL;
 
 	if(_tps_context_value.len > 0) {
 		sx = &_tps_context_value;
@@ -594,8 +596,17 @@ int tps_storage_record(sip_msg_t *msg, tps_data_t *td, int dialog, int dir)
 	}
 
 	if(dialog == 0) {
-		sruid_nextx(&_tps_sruid, sx);
-		suid = _tps_sruid.uid;
+		cpid = NULL;
+		if(_tps_xavu_cfg.len > 0 && _tps_xavu_field_cparam_uid.len > 0) {
+			cpid = xavu_get_child_with_sval(
+					&_tps_xavu_cfg, &_tps_xavu_field_cparam_uid);
+		}
+		if(cpid != NULL && cpid->val.v.s.len > 0) {
+			suid = cpid->val.v.s;
+		} else {
+			sruid_nextx(&_tps_sruid, sx);
+			suid = _tps_sruid.uid;
+		}
 	} else {
 		if(td->a_uuid.len > 0) {
 			suid = td->a_uuid;
