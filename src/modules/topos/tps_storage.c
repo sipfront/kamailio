@@ -236,6 +236,8 @@ int tps_storage_fill_contact(
 		return 0;
 	}
 
+	LM_WARN("********* agranig: parsing url: '%.*s'\n", sv.len, sv.s);
+
 	if(parse_uri(sv.s, sv.len, &puri) < 0) {
 		LM_ERR("failed to parse the uri\n");
 		return -1;
