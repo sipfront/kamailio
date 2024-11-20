@@ -267,9 +267,6 @@ int tps_skip_msg(sip_msg_t *msg)
 		return 1;
 	}
 
-	if((get_cseq(msg)->method_id) & (METHOD_REGISTER | METHOD_PUBLISH))
-		return 1;
-
 	if(_tps_methods_noinitial != 0 && msg->first_line.type == SIP_REQUEST
 			&& get_to(msg)->tag_value.len <= 0) {
 		if((get_cseq(msg)->method_id) & _tps_methods_noinitial) {
